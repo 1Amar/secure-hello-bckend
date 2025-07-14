@@ -20,7 +20,7 @@ public class AuthController {
         Map<String, Object> options = new HashMap<>();
         
         // Google OAuth2 login URL
-        options.put("googleLoginUrl", "/oauth2/authorization/google");
+//        options.put("googleLoginUrl", "/oauth2/authorization/google");
         
         // Keycloak OAuth2 login URL
         options.put("keycloakLoginUrl", "/oauth2/authorization/keycloak");
