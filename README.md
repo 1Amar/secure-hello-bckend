@@ -7,8 +7,6 @@
 ![JWT](https://img.shields.io/badge/JWT-JSON%20Web%20Token-yellowgreen)
 ![OAuth2](https://img.shields.io/badge/OAuth2-Authorization-blueviolet)
 ![Google SSO](https://img.shields.io/badge/Google%20SSO-Enabled-brightgreen)
-![Angular](https://img.shields.io/badge/Angular-v17+-red)
-![Docker](https://img.shields.io/badge/Docker-24.0-blue)
 
 
 ## Overview
