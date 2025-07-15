@@ -60,3 +60,6 @@ GET /api/user-info	Yes	User details from JWT
 -Spring Security
 -OAuth2 Resource Server
 -Keycloak Spring Adapter
+
+## License
+This project is licensed under the MIT License.
