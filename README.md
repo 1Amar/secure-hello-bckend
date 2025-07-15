@@ -1,5 +1,16 @@
 # Secure Hello API Backend
 
+![Java](https://img.shields.io/badge/Java-17-blue)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.0-green)
+![Maven](https://img.shields.io/badge/Maven-3.8.6-orange)
+![Keycloak](https://img.shields.io/badge/Keycloak-21.0-red)
+![JWT](https://img.shields.io/badge/JWT-JSON%20Web%20Token-yellowgreen)
+![OAuth2](https://img.shields.io/badge/OAuth2-Authorization-blueviolet)
+![Google SSO](https://img.shields.io/badge/Google%20SSO-Enabled-brightgreen)
+![Angular](https://img.shields.io/badge/Angular-v17+-red)
+![Docker](https://img.shields.io/badge/Docker-24.0-blue)
+
+
 ## Overview
 Spring Boot application with Keycloak integration providing:
 - Public `/api/public/hello` endpoint
