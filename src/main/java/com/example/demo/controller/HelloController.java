@@ -18,33 +18,6 @@ import com.example.demo.bean.UserInfo;
 @RequestMapping("/api")
 public class HelloController {
 
-//	@GetMapping("/hello")
-//	public HelloResponse hello() {
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//		String username = "Anonymous";
-//		String provider = "Unknown";
-//
-//		if (authentication instanceof JwtAuthenticationToken) {
-//			// JWT token from Keycloak
-//			Jwt jwt = ((JwtAuthenticationToken) authentication).getToken();
-//			username = jwt.getClaimAsString("preferred_username");
-//			if (username == null) {
-//				username = jwt.getClaimAsString("email");
-//			}
-//			provider = "Keycloak";
-//		} else if (authentication != null && authentication.getPrincipal() instanceof OAuth2User) {
-//			// OAuth2 user from Google
-//			OAuth2User oauth2User = (OAuth2User) authentication.getPrincipal();
-//			username = oauth2User.getAttribute("name");
-//			if (username == null) {
-//				username = oauth2User.getAttribute("email");
-//			}
-//			provider = "Google";
-//		}
-//
-//		return new HelloResponse("Hello, " + username + "! (via " + provider + ")", System.currentTimeMillis());
-//	}
-	
 	@GetMapping("/hello")
 	public HelloResponse hello() {
 	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -69,27 +42,6 @@ public class HelloController {
 
 	    return new HelloResponse("Hello, " + username + "! (via " + provider + ")", System.currentTimeMillis());
 	}
-
-
-//	@GetMapping("/user-info")
-//	public UserInfo getUserInfo() {
-//		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//
-//		if (authentication instanceof JwtAuthenticationToken) {
-//			// JWT token from Keycloak
-//			Jwt jwt = ((JwtAuthenticationToken) authentication).getToken();
-//			return new UserInfo(jwt.getClaimAsString("preferred_username"), jwt.getClaimAsString("email"),
-//					jwt.getClaimAsString("name"), null, // Keycloak doesn't provide picture in standard claims
-//					"Keycloak");
-//		} else if (authentication != null && authentication.getPrincipal() instanceof OAuth2User) {
-//			// OAuth2 user from Google
-//			OAuth2User oauth2User = (OAuth2User) authentication.getPrincipal();
-//			return new UserInfo(oauth2User.getAttribute("email"), oauth2User.getAttribute("email"),
-//					oauth2User.getAttribute("name"), oauth2User.getAttribute("picture"), "Google");
-//		}
-//
-//		return new UserInfo("Anonymous", null, null, null, "Unknown");
-//	}
 	
 	@GetMapping("/user-info")
 	public UserInfo getUserInfo() {
@@ -129,7 +81,6 @@ public class HelloController {
 
 	@GetMapping("/public/hello")
 	public HelloResponse getMethodName(@RequestParam(defaultValue = "default") String param) {
-//		public HelloResponse getMethodName(@RequestParam(required = false) String param) {
 		return new HelloResponse("Hello Public world", System.currentTimeMillis());
 	}
 
