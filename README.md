@@ -17,7 +17,7 @@ Spring Boot application with Keycloak integration providing:
 - Keycloak JWT role mapping
 - CORS configuration for Angular/React apps
 
-  ![Security Diagram](flow.diagram.png)
+  ![Security Diagram](login-flow.png)
 
 
 ## Prerequisites
