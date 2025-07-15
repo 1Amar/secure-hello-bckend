@@ -8,6 +8,9 @@ Spring Boot application with Keycloak integration providing:
 - Keycloak JWT role mapping
 - CORS configuration for Angular/React apps
 
+  ![Security Diagram](flow.diagram.png)
+
+
 ## Prerequisites
 - Java 17+
 - Keycloak server running on port 8081
