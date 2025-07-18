@@ -1,7 +1,5 @@
 package com.example.demo.configuration;
 
-import java.util.Arrays;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,11 +11,13 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
-	@Bean
+    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
@@ -31,11 +31,11 @@ public class SecurityConfig {
                 .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/api/hello").authenticated()
                 .requestMatchers("/api/user-info").authenticated()
+                .requestMatchers("/api/admin/**").hasRole("ADMIN") // Admin only endpoints
                 .anyRequest().authenticated()
             )
             // OAuth2 Login (for web-based login with Google/Keycloak)
             .oauth2Login(oauth2 -> oauth2
-//                .loginPage("/login")
                 .defaultSuccessUrl("/api/hello", true)
                 .failureUrl("/login?error=true")
             )
