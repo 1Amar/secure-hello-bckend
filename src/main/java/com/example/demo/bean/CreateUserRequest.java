@@ -2,6 +2,12 @@ package com.example.demo.bean;
 
 import java.util.List;
 
+/**
+*
+* @author Amar Pattanshetti
+* 
+*/
+
 public class CreateUserRequest {
 	private String username;
 	private String email;

@@ -1,5 +1,11 @@
 package com.example.demo.bean;
 
+/**
+*
+* @author Amar Pattanshetti
+* 
+*/
+
 public class HelloResponse {
     private String message;
     private long timestamp;

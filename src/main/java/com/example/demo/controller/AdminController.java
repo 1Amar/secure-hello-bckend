@@ -16,6 +16,12 @@ import com.example.demo.bean.CreateUserRequest;
 import com.example.demo.bean.UserSummary;
 import com.example.demo.service.KeycloakAdminService;
 
+/**
+*
+* @author Amar Pattanshetti
+* 
+*/
+
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
@@ -26,12 +32,6 @@ public class AdminController {
         this.keycloakAdminService = keycloakAdminService;
     }
     
-//    @GetMapping("/users")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public List<UserSummary> getAllUsers() {
-//        return keycloakAdminService.getAllUsers();
-//    }
-
     @PostMapping("/users")
     @PreAuthorize("hasRole('ADMIN')")
     public AdminResponse createUser(@RequestBody CreateUserRequest request) {
