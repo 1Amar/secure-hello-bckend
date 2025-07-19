@@ -6,6 +6,12 @@ import org.springframework.context.annotation.Configuration;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+*
+* @author Amar Pattanshetti
+* 
+*/
+
 @Configuration
 public class JackSonConfig {
 

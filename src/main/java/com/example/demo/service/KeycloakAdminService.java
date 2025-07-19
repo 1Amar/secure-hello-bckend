@@ -19,6 +19,11 @@ import com.example.demo.bean.UserSummary;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.core.Response; // ✅ correct for Spring Boot 3
 
+/**
+ *
+ * @author Amar Pattanshetti
+ * 
+ */
 
 @Service
 public class KeycloakAdminService {

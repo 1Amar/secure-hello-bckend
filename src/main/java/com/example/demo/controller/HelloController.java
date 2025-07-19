@@ -21,6 +21,12 @@ import com.example.demo.bean.UserInfo;
 import com.example.demo.bean.UserSummary;
 import com.example.demo.service.KeycloakAdminService;
 
+/**
+*
+* @author Amar Pattanshetti
+* 
+*/
+
 @RestController
 @RequestMapping("/api")
 public class HelloController {
@@ -116,37 +122,6 @@ public class HelloController {
     public List<UserSummary> getAllUsers() {
         return keycloakAdminService.getAllUsers();
     }
-
-//    @GetMapping("/admin/users")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public List<UserSummary> getAllUsers() {
-//        // This would typically come from a database
-//        return List.of(
-//            new UserSummary("admin", "admin@example.com", "Administrator", List.of("ROLE_ADMIN", "ROLE_USER")),
-//            new UserSummary("user1", "user1@example.com", "Regular User", List.of("ROLE_USER")),
-//            new UserSummary("user2", "user2@example.com", "Regular User", List.of("ROLE_USER"))
-//        );
-//    }
-//
-//    @PostMapping("/admin/users")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public AdminResponse createUser(@RequestBody CreateUserRequest request) {
-//        // This would typically create a user in the database
-//        return new AdminResponse(
-//            "User '" + request.getUsername() + "' created successfully",
-//            System.currentTimeMillis()
-//        );
-//    }
-//
-//    @DeleteMapping("/admin/users/{username}")
-//    @PreAuthorize("hasRole('ADMIN')")
-//    public AdminResponse deleteUser(@PathVariable String username) {
-//        // This would typically delete a user from the database
-//        return new AdminResponse(
-//            "User '" + username + "' deleted successfully",
-//            System.currentTimeMillis()
-//        );
-//    }
 
     // Helper method
     private String capitalize(String str) {

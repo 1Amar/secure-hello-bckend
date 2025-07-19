@@ -1,7 +1,10 @@
 package com.example.demo.configuration;
 
+import java.util.Arrays;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -11,11 +14,65 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.Arrays;
+/**
+ * Security configuration class for defining authentication and authorization rules using Spring Security.
+ *
+ * <p>Enables web security and configures CORS, session management, JWT-based resource server,
+ * OAuth2 login, and URL-based access controls for public and secured endpoints.
+ *
+ * <p>Integrates with Keycloak via a custom {@link KeycloakJwtGrantedAuthoritiesConverter} to handle role mapping.
+ *
+ * <p>Supports both browser-based OAuth2 login and token-based authentication for REST APIs.
+ * 
+ * <p>Typical use cases:
+ * <ul>
+ *     <li>Allow public access to endpoints like health checks and login</li>
+ *     <li>Restrict sensitive endpoints based on user roles</li>
+ *     <li>Enable secure frontend-backend communication via CORS</li>
+ * </ul>
+ *
+ *  <p>This configuration is activated under the {@code dev} Spring profile and is designed 
+ * to provide a flexible and less restrictive security setup to facilitate developer productivity.
+ * 
+ * <p>Main features:
+ * <ul>
+ *     <li><strong>CSRF Disabled:</strong> Disabled for convenience in development when using Angular or other SPA frameworks.</li>
+ *     <li><strong>CORS:</strong> Configured to allow requests from common local development origins (e.g., localhost:4200, 3000).</li>
+ *     <li><strong>Session Management:</strong> Typically stateless or may allow sessions as required for local debugging.</li>
+ *     <li><strong>Authorization:</strong> Some endpoints (like public APIs and health checks) are open, while others require authentication.</li>
+ *     <li><strong>OAuth2 Login and Resource Server:</strong> Supports OAuth2 login and JWT authentication as in production, enabling realistic end-to-end testing.</li>
+ * </ul>
+ * 
+ * <p><strong>Note:</strong> This configuration is intentionally more permissive than production to avoid developer friction. 
+ * It should not be used in production environments.
+ * 
+ * @author Amar Pattanshetti
+ */
+
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
+@Profile("dev")
+public class DevSecurityConfig {
+
+	/**
+	 * Configures the main security filter chain for HTTP requests.
+	 *
+	 * <p>Includes settings for:
+	 * <ul>
+	 *     <li>CORS with a predefined configuration</li>
+	 *     <li>Disabling CSRF (for stateless REST APIs)</li>
+	 *     <li>Session management (uses sessions only when required)</li>
+	 *     <li>Authorization rules for various endpoint patterns</li>
+	 *     <li>OAuth2 login with default success/failure URLs</li>
+	 *     <li>JWT resource server configuration for secured APIs</li>
+	 *     <li>Logout behavior and redirection</li>
+	 * </ul>
+	 *
+	 * @param http the {@link HttpSecurity} object to configure
+	 * @return the configured {@link SecurityFilterChain}
+	 * @throws Exception in case of configuration errors
+	 */
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -54,6 +111,14 @@ public class SecurityConfig {
         return http.build();
     }
     
+    /**
+     * Defines CORS configuration to allow requests from specific frontend origins.
+     *
+     * <p>Allows common HTTP methods and all headers. Supports credentials for secure cookies.
+     *
+     * @return the configured {@link CorsConfigurationSource}
+     */
+
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -67,6 +132,15 @@ public class SecurityConfig {
         return source;
     }
     
+    /**
+     * Creates and configures a {@link JwtAuthenticationConverter} to convert JWT tokens into Spring Security
+     * authorities using a custom Keycloak role converter.
+     *
+     * <p>This ensures that roles from Keycloak are mapped correctly into {@link org.springframework.security.core.GrantedAuthority}.
+     *
+     * @return the configured {@link JwtAuthenticationConverter}
+     */
+
     @Bean
     JwtAuthenticationConverter jwtAuthenticationConverter() {
         org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter converter = 
